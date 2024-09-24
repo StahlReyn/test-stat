@@ -22,22 +22,22 @@ func _init(id : int = 0, owner : Entity = null) -> void:
 	self.base_adder = 0
 	self.multiplier = 1
 
-func set_value(value : float):
+func set_value(value : float) -> void:
 	self.value = value
 
-func copy_values(other_stat : SingleStat):
+func copy_values(other_stat : SingleStat) -> void:
 	self.id = other_stat.id
 	self.value = other_stat.value
 	self.base_adder = other_stat.base_adder
 	self.multiplier = other_stat.multiplier
 	
-func combine_values(other_stat : SingleStat):
+func combine_values(other_stat : SingleStat) -> void:
 	if self.id == other_stat.id: # Combines stat only when it's same type
 		self.value += other_stat.value
 		self.base_adder += other_stat.base_adder
 		self.multiplier *= other_stat.multiplier
 
-func get_final_value():
+func get_final_value() -> float:
 	return (value + base_adder) * multiplier
 
 func get_modified_stat() -> SingleStat:

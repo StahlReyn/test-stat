@@ -26,19 +26,19 @@ func process_modifiers(single_stat : SingleStat) -> void:
 	elif is_active(): # Do first modifier
 		single_stat.combine_values(active_modifier)
 
-func is_active() -> Variant:
+func is_active() -> bool:
 	var entity : Entity = get_owner()
 	if entity:
 		return entity.stats.cur_health <= 50 # Here activates when health less than 50
 	return false
 
-func is_active_2() -> Variant:
+func is_active_2() -> bool:
 	var entity : Entity = get_owner()
 	if entity:
 		return entity.stats.cur_health <= 30 # Here activates when health less than 30
 	return false
 
-func is_active_3() -> float:
+func get_enemies_in_range() -> int:
 	var entity : Entity = get_owner()
 	if entity:
 		var enemies_in_range: int = 0
@@ -48,4 +48,3 @@ func is_active_3() -> float:
 		return enemies_in_range
 	else:
 		return 0
-

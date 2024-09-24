@@ -10,7 +10,7 @@ var attack : SingleStat
 var defense : SingleStat
 var speed : SingleStat
 
-func _init(owner = null) -> void:
+func _init(owner : Entity = null) -> void:
 	self.owner = owner
 	var ref = SingleStat.stat_id
 	max_health = SingleStat.new(ref.MAX_HEALTH, owner)
