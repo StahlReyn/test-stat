@@ -1,11 +1,17 @@
 class_name Item
 extends Resource
 
+var inventory : Inventory ## Inventory the item is in, so item can reference it
+
 func _init():
 	pass
 	
-func process_modifiers(single_stat : SingleStat) -> void:
-	if single_stat.id == SingleStat.stat_id.MAX_HEALTH:
-		single_stat.base_adder += 3
-		single_stat.multiplier += 1
+func process_modifiers(_single_stat : SingleStat) -> void:
 	return
+
+func set_inventory(inventory : Inventory) -> void:
+	self.inventory = inventory
+
+func get_owner() -> Entity:
+	return inventory.get_owner()
+	

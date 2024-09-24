@@ -30,9 +30,10 @@ func copy_values(other_stat : SingleStat):
 	self.multiplier = other_stat.multiplier
 	
 func combine_values(other_stat : SingleStat):
-	self.value += other_stat.value
-	self.base_adder += other_stat.base_adder
-	self.multiplier *= other_stat.multiplier
+	if self.id == other_stat.id: # Combines stat only when it's same type
+		self.value += other_stat.value
+		self.base_adder += other_stat.base_adder
+		self.multiplier *= other_stat.multiplier
 
 func get_final_value():
 	return (value + base_adder) * multiplier

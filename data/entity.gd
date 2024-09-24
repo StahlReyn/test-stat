@@ -9,8 +9,9 @@ func _ready() -> void:
 	stats.max_health.set_value(100)
 	stats.max_mana.set_value(100)
 	stats.recover_all()
-	inventory = Inventory.new()
-	inventory.add_item(Item.new())
+	inventory = Inventory.new(self)
+	# Add item to test
+	inventory.add_item(ItemExample.new())
 	pass
 
 func _process(_delta: float) -> void:
