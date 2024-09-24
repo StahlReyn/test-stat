@@ -1,6 +1,7 @@
 class_name Stats
 extends Resource
 
+var owner : Entity
 var cur_health : float = 0
 var cur_mana : float = 0
 var max_health : SingleStat
@@ -10,12 +11,13 @@ var defense : SingleStat
 var speed : SingleStat
 
 func _init(owner = null) -> void:
+	self.owner = owner
 	var ref = SingleStat.stat_id
-	max_health = SingleStat.new(ref.MAX_HEALTH)
-	max_mana = SingleStat.new(ref.MAX_MANA)
-	attack = SingleStat.new(ref.ATTACK)
-	defense = SingleStat.new(ref.DEFENSE)
-	speed = SingleStat.new(ref.SPEED)
+	max_health = SingleStat.new(ref.MAX_HEALTH, owner)
+	max_mana = SingleStat.new(ref.MAX_MANA, owner)
+	attack = SingleStat.new(ref.ATTACK, owner)
+	defense = SingleStat.new(ref.DEFENSE, owner)
+	speed = SingleStat.new(ref.SPEED, owner)
 	pass
 
 func recover_all() -> void:
