@@ -4,6 +4,7 @@ extends Item
 # THIS IS AN EXAMPLE - Of using single stat as a "set" to activate
 var active_modifier : SingleStat
 var active_modifier_2 : SingleStat
+var active_modifier_3 : SingleStat
 
 func _init():
 	var ref = SingleStat.stat_id
@@ -13,11 +14,15 @@ func _init():
 	active_modifier_2 = SingleStat.new(ref.MAX_HEALTH)
 	active_modifier_2.base_adder = 17
 	active_modifier_2.multiplier = 5
+	active_modifier_3 = SingleStat.new(ref.ATTACK)
+	active_modifier_3.base_adder = 5
+	active_modifier_3.multiplier = 3
 	pass
 	
 func process_modifiers(single_stat : SingleStat) -> void:
 	if is_active_2(): # Do second modifier
 		single_stat.combine_values(active_modifier_2)
+		single_stat.combine_values(active_modifier_3)
 	elif is_active(): # Do first modifier
 		single_stat.combine_values(active_modifier)
 

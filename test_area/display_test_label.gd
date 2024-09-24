@@ -11,7 +11,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	text = (
 		"ITEM COUNT: " + str(entity.inventory.get_item_count()) + "\n" +
-		"MHP: " + str(entity.get_max_health()) + "\n" +
+		"ATTACK: " + str(entity.stats.attack.get_modified_value(entity)) + "\n" +
+		"MHP: " + str(entity.stats.max_health.get_modified_value(entity)) + "\n" +
 		"HP: " + str(entity.stats.cur_health)
 	)
 	pass

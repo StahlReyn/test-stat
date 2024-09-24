@@ -37,3 +37,15 @@ func combine_values(other_stat : SingleStat):
 
 func get_final_value():
 	return (value + base_adder) * multiplier
+
+func get_modified_stat(entity : Entity) -> SingleStat:
+	var output_stat := SingleStat.new() # Creates a new single stat to calculate and not modify existing
+	output_stat.copy_values(entity.stats.get_stat_from_id(self.id))
+	if entity.inventory: # Process the entity inventory if it has it
+		var item_list := entity.inventory.get_items()
+		for item in item_list:
+			item.process_modifiers(output_stat)
+	return output_stat
+
+func get_modified_value(entity : Entity) -> float:
+	return self.get_modified_stat(entity).get_final_value()
